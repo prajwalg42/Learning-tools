@@ -1,0 +1,17 @@
+name: Self-Practice
+
+on: push
+
+jobs:
+  print-message:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check commands
+        run: echo "Hi this is prajwal learning new tools"
+
+      - name: Checking disk storage
+        run: df -h
+
+      - name: Checking memory
+        run: free -m
