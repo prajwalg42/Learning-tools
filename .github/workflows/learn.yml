@@ -1,0 +1,17 @@
+name: Learning yaml
+
+on: push
+
+jobs:
+  learn-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step 1 - Say hello
+        run: echo "Hello from Step 1"
+
+      - name: Step 2 - Print date
+        run: date
+
+      - name: Step 3 - Print files
+        run: ls -l
