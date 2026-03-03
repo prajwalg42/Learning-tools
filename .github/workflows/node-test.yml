@@ -1,0 +1,22 @@
+name: Node test pipeline
+
+on: 
+  push:
+    
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout registry
+        uses: actions/checkout@v4
+
+      - name: Install nodejs
+        uses: actions/setup-node@v4
+        with:
+          nodeVersion: 18
+          
+      - name: Run a small Javascript file
+        run: |
+              echo "console.log('This is a beginner test');" > test.js
+              node test.js
