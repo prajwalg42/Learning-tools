@@ -1,0 +1,31 @@
+name: Assignment2
+
+on: push
+jobs:
+  assignment:
+    runs-on: ubuntu-latest
+
+    env:
+      NAME: Prajwal
+      DOJ : January
+
+    steps:
+      - name: Information
+        run: |
+          echo "The name of employee is $NAME"
+          echo "His Date of joining is $DOJ"
+
+      - name: Create a file
+        run: echo "The name of employee is $NAME and his DOJ is $DOJ" > sample.txt
+
+      - name: List files
+        run: ls -l
+      - name: Upload as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sample-file
+          path: sample.txt
+        
+        
+
+          
