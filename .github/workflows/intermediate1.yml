@@ -25,5 +25,5 @@ jobs:
       - name: Upload the file as an architect
         uses: actions/upload-artifact@v4
         with:
-          name: sample-file
-          path: sample.txt  
+          name: text-file
+          path: textfile.txt  
