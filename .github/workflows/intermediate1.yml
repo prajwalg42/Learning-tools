@@ -1,0 +1,29 @@
+name: Intermediate learning workflow
+
+on: push
+
+jobs:
+  practice:
+    runs-on: ubuntu-latest
+
+    env:
+      MY_NAME: Prajwal
+      CITY: Hyderabad
+
+    steps:
+      - name: Show environment variables
+        run: |
+          echo "My name is $MY_NAME"
+          echo "I Live in $CITY"
+      
+      - name: Create a file
+        run: echo "This is a sample file from the workflow" > textfile.txt
+
+      - name: List files
+        run: ls -l
+
+      - name: Upload the file as an architect
+        uses: actions/upload-artifact@v4
+        with:
+          name: sample-file
+          path: sample.txt  
