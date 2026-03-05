@@ -1,0 +1,12 @@
+name: Output of this
+
+on: push
+
+jobs:
+  JOB_A:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.ver.outputs.tag}}
+    steps:
+      - id: ver
+        run: echo "tag=${GITHUB_RUN_NUMBER}" >> $GITHUB_OUTPUT
