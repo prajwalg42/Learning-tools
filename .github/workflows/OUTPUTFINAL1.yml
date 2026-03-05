@@ -1,0 +1,8 @@
+name: Output_check
+
+jobs:
+  JOB_B:
+    runs-on: ubuntu-latest
+    needs: JOB_A
+    steps:
+      - run: echo "Output received: ${{ needs.JOB_A.outputs.tag}}
