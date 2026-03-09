@@ -1,1 +1,33 @@
+pipeline{
+  agent any
 
+  environment {
+    APP_ENV = "dev"
+  }
+  stages{
+    stage('Checkout'){
+      steps{
+        checkout scm
+      }
+    }
+    stage('Build'){
+      steps{
+        sh """
+        echo "Building Environment"
+        echo "Environment: $APP_ENV"
+        """
+      }
+    }
+    stage('Tests'){
+      steps{
+        sh """
+        echo "Running tests..."
+        echo "Tests passed"
+        """
+      }
+    }      
+  }
+  post {
+    always { echo "Build complete" }
+      }
+}  
