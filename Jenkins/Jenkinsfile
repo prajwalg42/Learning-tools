@@ -30,7 +30,7 @@ pipeline{
           echo "artifact-${BUILD_NUMBER}" > build/output.txt
           '''
         sh "tar -czf artifact-${BUILD_NUMBER}.tar.gz build/"
-        archieveArtifacts "artifact-${BUILD_NUMBER}.tar.gz"
+        archiveArtifacts "artifact-${BUILD_NUMBER}.tar.gz"
       }
     }
       
