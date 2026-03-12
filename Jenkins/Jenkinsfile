@@ -1,33 +1,53 @@
 pipeline{
   agent any
 
-  environment {
-    APP_ENV = "dev"
-  }
   stages{
-    stage('Checkout'){
+
+    stage('Init'){
       steps{
-        checkout scm
+        echo "Pipeline triggered from GIT!"
+        echo "Repository: ${env.GIT_URL}
+        echo "BRANCH : ${env.GIT_BRANCH}
       }
     }
+     
+    stage('Test'){
+      steps{
+        echo "Running tests ...."
+      }
+    }
+
     stage('Build'){
       steps{
-        sh """
-        echo "Building Environment"
-        echo "Environment: $APP_ENV"
-        """
+        echo "Building the stages"
       }
     }
-    stage('Tests'){
+    stage('Package'){
       steps{
-        sh """
-        echo "Running tests..."
-        echo "Tests passed"
-        """
+        echo "Packaging artifact ...."
+        sh '''
+          mkdir -p build
+          echo "artifact-${BUILD_NUMBER}" > output.txt
+          '''
+        sh "tar -czf artifact-${BUILD_NUMBER}.tar.gz build/"
+        archieveArtifacts "artifact-${BUILD_NUMBER}.tar.gz
       }
-    }      
+    }
+      
   }
-  post {
-    always { echo "Build complete" }
+  
+  post{
+      success{
+        echo "Pipeline completed successfully"
       }
-}  
+
+      failure{
+        echo "Pipeline has failed"
+        }
+
+      always{
+          cleanWs()
+        }
+      }
+  
+}
