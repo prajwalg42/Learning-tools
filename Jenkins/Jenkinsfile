@@ -6,8 +6,8 @@ pipeline{
     stage('Init'){
       steps{
         echo "Pipeline triggered from GIT!"
-        echo "Repository: ${env.GIT_URL}
-        echo "BRANCH : ${env.GIT_BRANCH}
+        echo "Repository: ${env.GIT_URL}"
+        echo "BRANCH : ${env.GIT_BRANCH}"
       }
     }
      
